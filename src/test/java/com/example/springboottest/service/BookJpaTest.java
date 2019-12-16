@@ -1,4 +1,4 @@
-package com.example.springboottest;
+package com.example.springboottest.service;
 
 import com.example.springboottest.domain.Book;
 import com.example.springboottest.domain.BookRepository;
