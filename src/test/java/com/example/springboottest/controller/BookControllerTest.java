@@ -10,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -29,10 +30,10 @@ public class BookControllerTest {
 
     @Test
     public void Book_MVC_Test() throws Exception{
-        Book book = new Book();
+        Book book = new Book("Spring Boot Book", LocalDateTime.now());
         given(bookService.getBookList()).willReturn(Collections.singletonList(book));
 
-        mvc.perform(get("/"))
+        mvc.perform(get("/books"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("book"))
                 .andExpect(model().attributeExists("bookList"))
